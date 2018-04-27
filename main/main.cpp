@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int main() 
+int main()  
 {
     Queue<int> q1;
     Queue<int> q2 = {1, 2, 3, 4};
