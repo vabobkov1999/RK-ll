@@ -1,5 +1,47 @@
 
-option(HUNTER_ENABLED "Enable Hunter package manager support" ON)
+# Copyright (c) 2013-2017, Ruslan Baratov
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#
+# * Redistributions of source code must retain the above copyright notice, this
+#   list of conditions and the following disclaimer.
+#
+# * Redistributions in binary form must reproduce the above copyright notice,
+#   this list of conditions and the following disclaimer in the documentation
+#   and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+# This is a gate file to Hunter package manager.
+# Include this file using `include` command and add package you need, example:
+#
+#     cmake_minimum_required(VERSION 3.0)
+#
+#     include("cmake/HunterGate.cmake")
+#     HunterGate(
+#         URL "https://github.com/path/to/hunter/archive.tar.gz"
+#         SHA1 "798501e983f14b28b10cda16afa4de69eee1da1d"
+#     )
+#
+#     project(MyProject)
+#
+#     hunter_add_package(Foo)
+#     hunter_add_package(Boo COMPONENTS Bar Baz)
+#
+# Projects:
+#     * https://github.com/hunter-packages/gate/
+#     * https://github.com/ruslo/hunteroption(HUNTER_ENABLED "Enable Hunter package manager support" ON)
 if(HUNTER_ENABLED)
   if(CMAKE_VERSION VERSION_LESS "3.0")
     message(FATAL_ERROR "At least CMake version 3.0 required for hunter dependency management."
