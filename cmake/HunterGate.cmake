@@ -180,7 +180,7 @@ function(hunter_gate_detect_root)
     string(COMPARE NOTEQUAL "$ENV{USERPROFILE}" "" result)
     if(result)
       set(HUNTER_GATE_ROOT "$ENV{USERPROFILE}/.hunter" PARENT_SCOPE)
-      hunter_gate_status_debug(
+      hunter_gate_status_debug( 
           "HUNTER_ROOT set using USERPROFILE environment variable"
       )
       return()
