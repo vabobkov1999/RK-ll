@@ -7,8 +7,8 @@ using namespace std;
 int main() {
     Queue<int> b1;
     Queue<int> b2 = {1, 2, 3, 4};
-    Queue<int> b3{a2};
-    cout << a2 << endl;
+    Queue<int> b3{b2};
+    cout << b2 << endl;
     cout << b3 << endl;
     b1.swap(b3);
     cout << b1 << endl;
