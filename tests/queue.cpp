@@ -6,63 +6,64 @@ using namespace std;
 
 TEST_CASE("queue ini with other queue data")
 {
-    Queue <int> q1;
-    Queue <int> q2 = {1, 2, 3, 4};
-    Queue <int> q3{q2};
-    REQUIRE( q2 == q3);
+    Queue <int> b1;
+    Queue <int> b2 = {1, 2, 3, 4};
+    Queue <int> b3{b2};
+    REQUIRE( b2 == b3);
 }
 
 TEST_CASE("swap")
 {
-    Queue <int> q1;
-    Queue <int> q2 = {1, 2, 3, 4};
-    Queue <int> q3{q2};
-    Queue <int> temp = q3;
-    q1.swap(q3);
-    REQUIRE( q1 == temp);
-    REQUIRE( q3.empty() == true);
-    REQUIRE( q1.size() == 4);
+    Queue <int> b1;
+    Queue <int> b2 = {1, 2, 3, 4};
+    Queue <int> b3{b2};
+    Queue <int> temp = b3;
+    b1.swap(b3);
+    REQUIRE( b1 == temp);
+    REQUIRE( b3.empty() == true);
+    REQUIRE( b1.size() == 4);
 }
 
 TEST_CASE("push")
 {
-    Queue <int> q1;
-    Queue <int> q2 = {1, 2, 3, 4};
-    Queue <int> q3{q2};
-    q3.push(5);
-    REQUIRE( q3.size() == 5);
+    Queue <int> b1;
+    Queue <int> b2 = {1, 2, 3, 4};
+    Queue <int> b3{b2};
+    b3.push(5);
+    REQUIRE( b3.size() == 5);
 }
 TEST_CASE("pop#1")
 {
-    Queue<int> q4;
-    //если очередь пустая
-    q4.pop();
-    REQUIRE( q4.size() == 0);
+    Queue<int> b4;
+    //if the queue is empty
+    b4.pop();
+    REQUIRE( b4.size() == 0);
 }
 TEST_CASE("pop#2")
 {
-    Queue<int> q4 = {1};
-    q4.pop();
-    REQUIRE( q4.size() == 0);
+    Queue<int> b4 = {1};
+    // if queue 1 el
+    a4.pop();
+    REQUIRE( b4.size() == 0);
 }
 TEST_CASE("pop#3")
 {
-    Queue<int> q4 = {1, 2, 3, 4, 5};
-    q4.pop();
-    REQUIRE( q4.size() == 4);
+    Queue<int> b4 = {1, 2, 3, 4, 5};
+    // if queue 5 el
+    a4.pop();
+    REQUIRE( b4.size() == 4);
 }
 
 TEST_CASE("eq")
 {
-    Queue <int>  q1;
-    Queue <int>  q2 = {1, 2, 3, 4};
-    Queue <int>  q3{q2};
-    q3.push(5);
+    Queue <int>  b1;
+    Queue <int>  b2 = {1, 2, 3, 4};
+    Queue <int>  b3{b2};
+    a3.push(5);
     ofstream output{ "queue.bin" };
-    output << q3;
-    Queue <int> q4;
+    output << b3;
+    Queue <int> b4;
     ifstream input{ "queue.bin" };
-    input >> q4;
-    REQUIRE(! q4.empty() );
+    input >> b4;
+    REQUIRE(! b4.empty() );
 }
- 
