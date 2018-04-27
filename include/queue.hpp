@@ -6,20 +6,18 @@
 #include <stdexcept>
 #include <initializer_list>
 using namespace std;
-
 template <typename T>
 struct Node {
     T data;
     Node* next;
 };
-
 template <typename T>
 class FList {
 public:
     
     Node<T>* first;
-     Node<T>* last;
-      auto empty_()   -> bool
+    Node<T>* last;
+    auto empty_()   -> bool
     {
         if (first)
             return false;
@@ -28,25 +26,25 @@ public:
     auto getlength()  ->size_t
     {
         if (empty_()) return 0;
-         int i = 0;
-          Node<T>* working = first;
-           for (;working->next!=nullptr;i++, working=working->next);
-            return i+1;
+        int i = 0;
+        Node<T>* working = first;
+        for (;working->next!=nullptr;i++, working=working->next);
+        return i+1;
     }
     auto getf() const -> Node<T>* {return this->first;};
     auto getf_v()const -> T& {
         if (this->first == nullptr) {
             throw logic_error("Exception");
-        }else 
+        }else
             return this->first->data;
         
     };
     auto getl_v()const -> T& {return this->first->data;};
-     auto getl() const -> Node<T>* {return this->last;};
-      auto setf(Node<T> * a) ->void {first = a;}
-       auto setl(Node<T> * a) ->void {last = a;}
-        FList(Node<T> *node_): first{ node_} {}
-          FList() : first{ nullptr }, last{nullptr} {}
+    auto getl() const -> Node<T>* {return this->last;};
+    auto setf(Node<T> * a) ->void {first = a;}
+    auto setl(Node<T> * a) ->void {last = a;}
+    FList(Node<T> *node_): first{ node_} {}
+    FList() : first{ nullptr }, last{nullptr} {}
     ~FList() {
         for (Node<T>* temp = first; temp != nullptr; temp = temp->next) {
             delete temp;
@@ -78,13 +76,13 @@ public:
             this->push(item);
     }
     
-    auto swap(Queue& q) -> void {
+    auto swap(Queue& a) -> void {
         Node<T>* first1 = list->first;
-         Node<T>* last1 = list->last;
-         list->first = q.list->first;
-          list->last = q.list->last;
-           q.list->first = first1;
-            q.list->last = last1;
+        Node<T>* last1 = list->last;
+        list->first = a.list->first;
+        list->last = a.list->last;
+        a.list->first = first1;
+        a.list->last = last1;
     }
     
     auto empty() -> bool{return list->empty_();}
@@ -92,19 +90,19 @@ public:
     auto push(T val) -> void{
         if (empty()) {
             list->first = new Node<T>{};
-              list->first->next = nullptr;
-               list->first->data = val;
-                list->last = list->first;
+            list->first->next = nullptr;
+            list->first->data = val;
+            list->last = list->first;
         }
         else {
             list->last->next = new Node<T>;
-              list->last = list->last->next;
-               list->last->data = val;
-                list->last->next = nullptr;
+            list->last = list->last->next;
+            list->last->data = val;
+            list->last->next = nullptr;
         }
     }
     auto pop() -> void{
-        if (list->first == nullptr) return; //уже пуст
+        if (list->first == nullptr) return; //если уже пуст
         if (list->first->next == nullptr){
             delete list->first;
             list->first = nullptr;
@@ -130,9 +128,9 @@ public:
             return list->last->data;
     }
     
-    friend auto operator<<(std::ostream& out, Queue<T>& q)->std::ostream&
+    friend auto operator<<(std::ostream& out, Queue<T>& a)->std::ostream&
     {
-        for (Node<T> * tmp = q.list->first; tmp != nullptr; tmp = tmp->next) {
+        for (Node<T> * tmp = a.list->first; tmp != nullptr; tmp = tmp->next) {
             out << tmp->data;
             if (tmp->next != nullptr) {
                 out << "->";
@@ -140,18 +138,18 @@ public:
             }
             return out;
             }
-            friend auto operator >> (std::istream& in, Queue<T>& q)->std::istream& {
+            friend auto operator >> (std::istream& in, Queue<T>& a)->std::istream& {
                 T push_value;
                 in >> push_value;
-                q.push(push_value);
+                a.push(push_value);
                 return in;
             }
-            auto operator==(const Queue& q)->bool {
-                if (this->size() != q.size())
+            auto operator==(const Queue& a)->bool {
+                if (this->size() != a.size())
                     return false;
                 else {
                     Node<T>* p_this = list->first;
-                    Node<T>* p = q.list->first;
+                    Node<T>* p = a.list->first;
                     while (!(p_this==nullptr||p==nullptr))
                     {
                         if (p->data != p_this->data)
@@ -166,4 +164,4 @@ public:
         
         
         
-#endif /* Queue_hpp */
+#endif 
