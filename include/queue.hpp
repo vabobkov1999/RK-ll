@@ -76,13 +76,13 @@ public:
             this->push(item);
     }
     
-    auto swap(Queue& a) -> void {
+    auto swap(Queue& q) -> void {
         Node<T>* first1 = list->first;
         Node<T>* last1 = list->last;
-        list->first = a.list->first;
-        list->last = a.list->last;
-        a.list->first = first1;
-        a.list->last = last1;
+        list->first = q.list->first;
+        list->last = q.list->last;
+        q.list->first = first1;
+        q.list->last = last1;
     }
     
     auto empty() -> bool{return list->empty_();}
@@ -102,7 +102,7 @@ public:
         }
     }
     auto pop() -> void{
-        if (list->first == nullptr) return; //если уже пуст
+        if (list->first == nullptr) return; //уже пуст
         if (list->first->next == nullptr){
             delete list->first;
             list->first = nullptr;
@@ -128,9 +128,9 @@ public:
             return list->last->data;
     }
     
-    friend auto operator<<(std::ostream& out, Queue<T>& a)->std::ostream&
+    friend auto operator<<(std::ostream& out, Queue<T>& q)->std::ostream&
     {
-        for (Node<T> * tmp = a.list->first; tmp != nullptr; tmp = tmp->next) {
+        for (Node<T> * tmp = q.list->first; tmp != nullptr; tmp = tmp->next) {
             out << tmp->data;
             if (tmp->next != nullptr) {
                 out << "->";
@@ -138,18 +138,18 @@ public:
             }
             return out;
             }
-            friend auto operator >> (std::istream& in, Queue<T>& a)->std::istream& {
+            friend auto operator >> (std::istream& in, Queue<T>& q)->std::istream& {
                 T push_value;
                 in >> push_value;
-                a.push(push_value);
+                q.push(push_value);
                 return in;
             }
-            auto operator==(const Queue& a)->bool {
-                if (this->size() != a.size())
+            auto operator==(const Queue& q)->bool {
+                if (this->size() != q.size())
                     return false;
                 else {
                     Node<T>* p_this = list->first;
-                    Node<T>* p = a.list->first;
+                    Node<T>* p = q.list->first;
                     while (!(p_this==nullptr||p==nullptr))
                     {
                         if (p->data != p_this->data)
@@ -164,4 +164,4 @@ public:
         
         
         
-#endif 
+#endif /* Queue_hpp */
