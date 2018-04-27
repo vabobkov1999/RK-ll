@@ -37,7 +37,7 @@ public:
     auto getf_v()const -> T& {
         if (this->first == nullptr) {
             throw logic_error("Exception");
-        }else
+        }else 
             return this->first->data;
         
     };
