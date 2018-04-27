@@ -15,7 +15,7 @@ int main() {
     cout << boolalpha << b3.empty() << endl;
     cout << b1.size() << endl;
     cout << b2.size() << endl;
-    a3.push(5);
+    b3.push(5);
    cout << boolalpha << b2.empty() << endl;
     cout << b3 << endl;
     ofstream output{ "queue.bin" };
